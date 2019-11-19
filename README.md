@@ -1,11 +1,17 @@
 # Alfresco SOLR Monitoring
 
-Deployment template for Alfresco SOLR Monitoring using `solr-exporter`, Prometheus and Grafana.
+Deployment template for Alfresco SOLR Monitoring using:
+
+* [prometheus-exporter](https://github.com/apache/lucene-solr/tree/releases/lucene-solr/7.3.0/solr/contrib/prometheus-exporter) to build Prometheus compliant endpoint from selected [SOLR Metrics](http://localhost:8083/solr/admin/metrics)
+* [Prometheus](https://prometheus.io) to get monitoring data from `prometheus-exporter` as a Target
+* [Grafana](https://grafana.com) to build a monitoring dashboard with `Prometheus` as data source
+
+[SOLR Metrics](https://lucene.apache.org/solr/guide/6_6/metrics-reporting.html) are used as source for `prometheus-exporter`.
 
 ## Services
 
 ```
-solr6:8983 << solr-exporter:9854 >> prometheus-server:9090 << grafana-ui:3000
+solr6:8983 << solr-exporter:9854 << prometheus-server:9090 << grafana-ui:3000
 ```
 
 * **SOLR** service is indexing Alfresco Repository contents
@@ -80,26 +86,36 @@ Use the following username/password combination to login in Grafana UI.
 http://localhost:3000
 ```
 
-## Configuring Grafana Dashboard
+# Configuring Grafana Dashboard
+
+Once everything is running, access to Grafana UI.
+
+http://localhost:3000
+
 
 **Adding Prometheus Data Source**
 
-Configuration > Data Sources > Add data source
+Use `Configuration > Data Sources > Add data source` option and choose `Prometheus` data source.
 
-Prometheus
+Configure Prometheus Data Source with following setting:
 
-URL: http://<local-ip>:9090
+```
+URL: http://prometheus-server:9090
+```
 
-Save & Test
+Click `Save & Test` button.
+
 
 **Importing SOLR Dashboard**
 
-Create > Import
+When Prometheus Data Source is running, create your first Dashboard using `+ > Create > Import` option.
 
-Upload .json file
+Click the `Upload.json file` button and add the sample dashboard from project folder:
 
+```
 grafana/grafana-solr6-dashboard.json
+```
 
-Prometheus: Prometheus
+In the Prometheus field, set `Prometheus` as value (this is the Data Source configured in the previous step).
 
-Import
+Click the `Import` button and Grafana will show your **Solr Dashboard**
