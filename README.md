@@ -23,7 +23,9 @@ solr6:8983 << solr-exporter:9854 << prometheus-server:9090 << grafana-ui:3000
 
 * `solr-exporter/solr6-exporter-config.xml` parsing rules for JSON Response from http://127.0.0.1:8083/solr6/admin/metrics. Additional information to configure this file can be obtained in https://github.com/apache/lucene-solr/tree/releases/lucene-solr/7.3.0/solr/contrib/prometheus-exporter/conf
 * `prometheus/prometheus.yml` adds new job for `solr-exporter` target in order to include results in Prometheus
-* `grafana/grafana-solr6-dashboard.json` sample Grafana Dashboard showing metrics from Prometheus
+* `grafana/datasources/prometheus.yml` Prometheus data source configuration
+* `grafana/dashboards/solr.yml` Solr Dashboard configuration
+* `grafana/grafana-solr6-dashboard.json` sample source for Grafana Dashboard showing metrics from Prometheus
 
 # How to use this composition
 
@@ -86,36 +88,10 @@ Use the following username/password combination to login in Grafana UI.
 http://localhost:3000
 ```
 
-# Configuring Grafana Dashboard
+# Grafana Dashboard
 
 Once everything is running, access to Grafana UI.
 
 http://localhost:3000
 
-
-**Adding Prometheus Data Source**
-
-Use `Configuration > Data Sources > Add data source` option and choose `Prometheus` data source.
-
-Configure Prometheus Data Source with following setting:
-
-```
-URL: http://prometheus-server:9090
-```
-
-Click `Save & Test` button.
-
-
-**Importing SOLR Dashboard**
-
-When Prometheus Data Source is running, create your first Dashboard using `+ > Create > Import` option.
-
-Click the `Upload.json file` button and add the sample dashboard from project folder:
-
-```
-grafana/grafana-solr6-dashboard.json
-```
-
-In the Prometheus field, set `Prometheus` as value (this is the Data Source configured in the previous step).
-
-Click the `Import` button and Grafana will show your **Solr Dashboard**
+Your `Solr Dashboard` will be available in **Dashboards** section.

@@ -161,6 +161,10 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=secret
     links:
       - prometheus-server:prometheus
+    volumes:
+      - ./grafana/datasources/prometheus.yml:/etc/grafana/provisioning/datasources/prometheus.yml
+      - ./grafana/dashboards/solr.yml:/etc/grafana/provisioning/dashboards/solr.yml
+      - ./grafana/grafana-solr6-dashboard.json:/var/lib/grafana/dashboards/grafana-solr6-dashboard.json
 
   solr-exporter:
     image: solr:7.3.0
