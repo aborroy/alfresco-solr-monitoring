@@ -1,4 +1,24 @@
 {
+  "__requires": [
+     {
+       "type": "grafana",
+       "id": "grafana",
+       "name": "Grafana",
+       "version": "4.6.3"
+     },
+     {
+       "type": "panel",
+       "id": "graph",
+       "name": "Graph",
+       "version": ""
+     },
+     {
+       "type": "datasource",
+       "id": "prometheus",
+       "name": "Prometheus",
+       "version": "1.0.0"
+     }
+   ],
   "annotations": {
     "list": [
       {
