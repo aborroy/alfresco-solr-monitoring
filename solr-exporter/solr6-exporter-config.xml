@@ -177,7 +177,7 @@
             }
           </str>
           <str>
-            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.heap.")) | select(.key | endswith(".usage")) as $object |
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.heap.usage")) as $object |
             $object.key | split(".")[1] as $item |
             $object.value.value as $value |
             {

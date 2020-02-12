@@ -1,24 +1,37 @@
 {
   "__requires": [
-     {
-       "type": "grafana",
-       "id": "grafana",
-       "name": "Grafana",
-       "version": "4.6.3"
-     },
-     {
-       "type": "panel",
-       "id": "graph",
-       "name": "Graph",
-       "version": ""
-     },
-     {
-       "type": "datasource",
-       "id": "prometheus",
-       "name": "Prometheus",
-       "version": "1.0.0"
-     }
-   ],
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.6.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
   "annotations": {
     "list": [
       {
@@ -450,8 +463,8 @@
           ],
           "defaults": {
             "mappings": [],
-            "max": 100,
-            "min": 0,
+            "max": 1.0,
+            "min": 0.0,
             "thresholds": [
               {
                 "color": "green",
@@ -459,7 +472,7 @@
               },
               {
                 "color": "red",
-                "value": 75
+                "value": 0.75
               }
             ],
             "unit": "percentunit"
