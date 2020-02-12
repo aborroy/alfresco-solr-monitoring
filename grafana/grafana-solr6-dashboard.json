@@ -1,24 +1,4 @@
 {
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "4.6.3"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -37,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1574069754215,
+  "iteration": 1581509380651,
   "links": [],
   "panels": [
     {
@@ -434,6 +414,59 @@
       }
     },
     {
+      "datasource": "Prometheus",
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 61,
+      "links": [],
+      "options": {
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 75
+              }
+            ],
+            "unit": "percentunit"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "auto",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "6.4.4",
+      "targets": [
+        {
+          "expr": "solr_metrics_memory_heap_usage{base_url=~\"$base_url\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{base_url}} {{item}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Heap Usage",
+      "type": "gauge"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -443,8 +476,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 24,
-        "x": 0,
+        "w": 12,
+        "x": 12,
         "y": 16
       },
       "id": 10,
@@ -1290,7 +1323,7 @@
       }
     }
   ],
-  "refresh": "1m",
+  "refresh": "5s",
   "schemaVersion": 20,
   "style": "dark",
   "tags": [],
@@ -1480,5 +1513,5 @@
   "timezone": "browser",
   "title": "Solr Dashboard",
   "uid": "GqfWBzbWz",
-  "version": 2
+  "version": 1
 }
