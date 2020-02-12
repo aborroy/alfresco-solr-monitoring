@@ -176,6 +176,19 @@
               value        : $value
             }
           </str>
+          <str>
+            .metrics["solr.jvm"] | to_entries | .[] | select(.key | startswith("memory.heap.usage")) as $object |
+            $object.key | split(".")[1] as $item |
+            $object.value.value as $value |
+            {
+              name         : "solr_metrics_memory_heap_usage",
+              type         : "GAUGE",
+              help         : "See following URL: https://lucene.apache.org/solr/guide/metrics-reporting.html",
+              label_names  : ["item"],
+              label_values : [$item],
+              value        : $value
+            }
+          </str>
           <!--
             solr node metrics
           -->
